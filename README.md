@@ -1,3 +1,5 @@
+# Convolution-smoothed SVM
+
 This repo replicates simulations for convolutional-smooth SVM.
 
 The figures can be replicated by running the notebook `simulations.ipynb'.
