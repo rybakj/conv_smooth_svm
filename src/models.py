@@ -365,7 +365,7 @@ def calculate_errors(n, p, mu1, mu2, Sigma, n_iter, results_dict):
         X, Y = generate_data(n, p, mu1, mu2, Sigma)
 
         if i % log_iter == 0:
-            print(i)
+            print(f"Iteration: {i}/{n_iter}")
 
         # Estimate  models
         ssvm, hsvm, svc = estimate_models(X, Y, h=(p / n) ** (1 / 4))
@@ -378,8 +378,8 @@ def calculate_errors(n, p, mu1, mu2, Sigma, n_iter, results_dict):
 
         # Bahadur representation
         bah_errors = bahadur_error_calculation(ssvm, hsvm, psvm)
-        results_dict["hsvm_bah_errors"][n].append(bah_errors["hsvm"])
-        results_dict["ssvm_bah_errors"][n].append(bah_errors["ssvm"])
+        results_dict["hsvm_bah_errors"][n].append(np.sqrt(n)*bah_errors["hsvm"])
+        results_dict["ssvm_bah_errors"][n].append(np.sqrt(n)*bah_errors["ssvm"])
 
     return (results_dict)
 
